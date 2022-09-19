@@ -1,0 +1,13 @@
+.container {
+    width: calc(100% - 94px - 94px);
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 94px 0 94px;
+    align-items: center;         
+}
+
+.logo {
+    width: 68px;    
+}
