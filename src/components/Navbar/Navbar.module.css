@@ -16,6 +16,11 @@
     margin-top: 49px;    
 }
 
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
 p {
     margin: 0;
 }

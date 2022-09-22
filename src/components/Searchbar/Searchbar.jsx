@@ -3,7 +3,12 @@ import styles from './Searchbar.module.css';
 
 function Searchbar() {
   return (
-    <div>Searchbar</div>
+    <div className={styles.container}>
+      <input placeholder='Add guests' />
+      <span class="material-symbols-outlined">
+        search
+      </span>
+    </div>
   )
 }
 
