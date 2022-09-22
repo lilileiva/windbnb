@@ -7,14 +7,17 @@ function Properties() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Stays in Finland</h1>
+      <div className={styles.rowList}>
+        <h1 className={styles.title}>Stays in Finland</h1>
+        <p className={styles.staysAmount}>{stays.length}+ stays</p>
+      </div>
       <li className={styles.list}>
         {
           stays.map((stay) => {
             return (
               <ul className={styles.stay}>
                 <img src={stay.photo} alt='photo' className={styles.photo} />
-                <div className={styles.row}>
+                <div className={styles.rowSuperhostRating}>
                   <div className={styles.roww}>
                     {
                       stay.superHost && <p className={styles.superhost}>SUPER HOST</p>
