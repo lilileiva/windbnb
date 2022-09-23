@@ -4,3 +4,15 @@
     align-items: center;
     justify-content: end;
 }
+
+input {
+    font-size: 14px;
+    color: #BDBDBD;
+    border: 0;
+    text-align: center;
+    outline: none;
+}
+
+.submit {
+    cursor: pointer;
+}

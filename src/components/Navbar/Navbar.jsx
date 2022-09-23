@@ -9,7 +9,7 @@ function Navbar() {
       <div className={styles.content}>
         <img className={styles.logo} src={logo} alt='logo' />
         <div className={styles.row}>
-          <p>Helsinki, Finland</p>
+          <p className={styles.location}>Helsinki, Finland</p>
           <Searchbar />
         </div>
       </div>
