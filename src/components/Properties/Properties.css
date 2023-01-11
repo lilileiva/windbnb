@@ -1,3 +1,7 @@
+.container {
+    position: relative;
+}
+
 .material-symbols-outlined {
     display: flex;
     color: #EB5757;

@@ -3,7 +3,7 @@ import styles from './Properties.module.css';
 import stays from '../../stays.json';
 import './Properties.css';
 
-function Properties({ numberGuests }) {
+function Properties({ numberGuests, dropdownMenu }) {
 
   let properties = []
   if (numberGuests == "") properties = stays
@@ -24,7 +24,7 @@ function Properties({ numberGuests }) {
               {
                   properties.map((stay) => {
                     return (
-                      <ul className={styles.stay}>
+                      <ul className={styles.stay} key={stay.title}>
                         <img src={stay.photo} alt='photo' className={styles.photo} />
                         <div className={styles.rowSuperhostRating}>
                           <div className={styles.rowSuperhostType}>

@@ -6,7 +6,7 @@ import stays from '../../stays.json';
 function Searchbar({ handleInputChange, handleInputSubmit }) {
   return (
     <form className={styles.container} onSubmit={(e) => handleInputSubmit(e)}>
-      <input onFocus='false' type='text' placeholder='Add guests' onChange={(e) => handleInputChange(e)} />
+      <input type='text' placeholder='Add guests' onChange={(e) => handleInputChange(e)} />
       <div className={styles.submit} onClick={(e) => handleInputSubmit(e)}>
         <span class="material-symbols-outlined">
           search
