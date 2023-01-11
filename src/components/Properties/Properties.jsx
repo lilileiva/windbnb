@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styles from './Properties.module.css';
 import stays from '../../stays.json';
 import './Properties.css';
@@ -6,17 +6,21 @@ import './Properties.css';
 function Properties({ numberGuests }) {
 
   let properties = []
-  if (numberGuests == "") properties = stays
-  else properties = stays.filter((stay) => stay.maxGuests == numberGuests)
+  if (numberGuests === "") properties = stays
+  else properties = stays.filter((stay) => stay.maxGuests === numberGuests)
 
   return (
     <div className={styles.container}>
       <div className={styles.rowList}>
         <h1 className={styles.title}>Stays in Finland</h1>
-        <p className={styles.staysAmount}>{stays.length}+ stays</p>
+        {
+          properties.length > 1 ? <p className={styles.staysAmount}>{properties.length - 1}+ stays</p>
+            : properties.length === 1 ? <p className={styles.staysAmount}>{properties.length} stays</p>
+              : <p className={styles.staysAmount}>0 stays</p>
+        }
       </div>
         {
-          properties.length == 0
+          properties.length === 0
             ? <div className={styles.noResults}>
               <p>No results...</p>
             </div>
@@ -24,7 +28,7 @@ function Properties({ numberGuests }) {
               {
                   properties.map((stay) => {
                     return (
-                      <ul className={styles.stay}>
+                      <ul className={styles.stay} key={stay.photo}>
                         <img src={stay.photo} alt='photo' className={styles.photo} />
                         <div className={styles.rowSuperhostRating}>
                           <div className={styles.rowSuperhostType}>
