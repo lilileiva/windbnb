@@ -20,11 +20,21 @@ function App() {
     else setNumberGuests("")
   }
 
+  const [dropdownMenu, setDropdownMenu] = useState(false)
+  const changeDropdownState = () => {
+    dropdownMenu ? setDropdownMenu(false) : setDropdownMenu(true)
+  }
+
   return (
     <div className="App">
       <div className="container">
-        <Navbar handleInputChange={handleInputChange} handleInputSubmit={handleInputSubmit} />
-        <Properties numberGuests={numberGuests} />
+        <Navbar
+          handleInputChange={handleInputChange}
+          handleInputSubmit={handleInputSubmit}
+          dropdownMenu={dropdownMenu}
+          changeDropdownState={changeDropdownState}
+        />
+        <Properties numberGuests={numberGuests} dropdownMenu={dropdownMenu} />
         <Footer />
       </div>
     </div>
