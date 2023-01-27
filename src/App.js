@@ -8,6 +8,13 @@ function App() {
 
   let num
   const [numberGuests, setNumberGuests] = useState("")
+  const [location, setLocation] = useState("")
+  const [search, setSearch] = useState(false)
+
+  const [dropdownMenu, setDropdownMenu] = useState(false)
+  const changeDropdownState = () => {
+    dropdownMenu ? setDropdownMenu(false) : setDropdownMenu(true)
+  }
 
   const handleInputChange = (e) => {
     if (e.target.value == Number(e.target.value) && e.target.value !== " " && Number(e.target.value) !== NaN) num = e.target.value
@@ -18,12 +25,16 @@ function App() {
     e.preventDefault()
     if (num) setNumberGuests(Number(num))
     else setNumberGuests("")
+    if (dropdownMenu == true) setDropdownMenu(false)
+    setSearch(true)
   }
 
-  const [dropdownMenu, setDropdownMenu] = useState(false)
-  const changeDropdownState = () => {
-    dropdownMenu ? setDropdownMenu(false) : setDropdownMenu(true)
-  }
+  const locationSearch = (city) => {
+    setLocation(city)
+    setDropdownMenu(false)
+    setSearch(true)
+    return location
+  }  
 
   return (
     <div className="App">
@@ -33,8 +44,17 @@ function App() {
           handleInputSubmit={handleInputSubmit}
           dropdownMenu={dropdownMenu}
           changeDropdownState={changeDropdownState}
+          locationSearch={locationSearch}
         />
-        <Properties numberGuests={numberGuests} dropdownMenu={dropdownMenu} />
+        <Properties
+          dropdownMenu={dropdownMenu}
+          numberGuests={numberGuests}
+          setNumberGuests={setNumberGuests}
+          location={location}
+          setLocation={setLocation}
+          search={search}
+          setSearch={setSearch}
+        />
         <Footer />
       </div>
     </div>
