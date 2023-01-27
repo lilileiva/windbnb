@@ -4,7 +4,7 @@ import logo from '../../img/logo.png';
 import Searchbar from '../Searchbar/Searchbar';
 import stays from '../../stays.json';
 
-function Navbar({ handleInputChange, handleInputSubmit, dropdownMenu, changeDropdownState }) {
+function Navbar({ handleInputChange, handleInputSubmit, dropdownMenu, changeDropdownState, locationSearch }) {
 
   let cities = []
   stays.filter((stay) => cities.push(stay.city))
@@ -26,11 +26,13 @@ function Navbar({ handleInputChange, handleInputSubmit, dropdownMenu, changeDrop
                 </div>
                 <Searchbar handleInputChange={handleInputChange} handleInputSubmit={handleInputSubmit} />
               </div>
-              <li>
+              <li className={styles.locationList} >
                 {
                   citiesFiltered.map((city) => (
                     <ul>
-                      <p>{city}, Finland</p>
+                      <p onClick={() => locationSearch(city)}>
+                        {city}, Finland
+                      </p>
                     </ul>
                   ))
                 }
