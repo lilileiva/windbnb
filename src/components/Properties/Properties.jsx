@@ -7,30 +7,29 @@ import { useState } from 'react';
 function Properties({ dropdownMenu, numberGuests, setNumberGuests, location, setLocation, search, setSearch }) {
 
   let properties = []
+  const [listProperties, setListProperties] = useState([])
 
-  const setProperties = (numberGuests, location, properties) => {
+  const setProperties = (numberGuests, location) => {
     if (numberGuests !== "" && location == "") {          
-      properties = stays.filter((stay) => stay.maxGuests === numberGuests)
-      console.log(properties)            
+      properties = stays.filter((stay) => stay.maxGuests === numberGuests)        
     }
     if (location !== "" && numberGuests == "") {      
-      properties = stays.filter((stay) => stay.city === location)
-      console.log(properties)             
+      properties = stays.filter((stay) => stay.city === location)        
     }
     setLocation("")
-    setNumberGuests("")
-    console.log(properties)      
+    setNumberGuests("")  
     return properties
   }
 
   const [noSearchYet, setNoSearchYet] = useState(true)
-  useEffect((properties) => { 
+  useEffect(() => { 
     if (search == true)  {
-      setProperties(numberGuests, location, properties)      
+      properties = setProperties(numberGuests, location)
+      setListProperties(properties)    
       setNoSearchYet(false)   
     }
     setSearch(false)
-  }, [search, properties])
+  }, [search, listProperties])
 
   if (search == false && noSearchYet == true) {
     properties = stays
@@ -41,19 +40,19 @@ function Properties({ dropdownMenu, numberGuests, setNumberGuests, location, set
       <div className={styles.rowList}>
         <h1 className={styles.title}>Stays in Finland</h1>
         {
-          properties.length > 1 ? <p className={styles.staysAmount}>{properties.length - 1}+ stays</p>
-            : properties.length === 1 ? <p className={styles.staysAmount}>{properties.length} stays</p>
+          listProperties.length > 1 ? <p className={styles.staysAmount}>{listProperties.length - 1}+ stays</p>
+            : listProperties.length === 1 ? <p className={styles.staysAmount}>{listProperties.length} stays</p>
               : <p className={styles.staysAmount}>0 stays</p>
         }
       </div>
       {
-        properties.length === 0
+        listProperties.length === 0
           ? <div className={styles.noResults}>
             <p>No results...</p>
           </div>
           : <li className={styles.list}>
             {
-              properties.map((stay) => {
+              listProperties.map((stay) => {
                 return (
                   <ul className={styles.stay} key={stay.title}>
                     <img src={stay.photo} alt='photo' className={styles.photo} />
