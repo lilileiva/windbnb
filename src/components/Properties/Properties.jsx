@@ -13,8 +13,11 @@ function Properties({ dropdownMenu, numberGuests, setNumberGuests, location, set
     if (numberGuests !== "" && location == "") {          
       properties = stays.filter((stay) => stay.maxGuests === numberGuests)        
     }
-    if (location !== "" && numberGuests == "") {      
+    else if (location !== "" && numberGuests == "") {      
       properties = stays.filter((stay) => stay.city === location)        
+    } else {
+      properties = stays
+      setListProperties(properties) 
     }
     setLocation("")
     setNumberGuests("")  
@@ -28,12 +31,12 @@ function Properties({ dropdownMenu, numberGuests, setNumberGuests, location, set
       setListProperties(properties)    
       setNoSearchYet(false)   
     }
+    if (search == false && noSearchYet == true) {
+      properties = stays
+      setListProperties(properties) 
+    }
     setSearch(false)
   }, [search, listProperties])
-
-  if (search == false && noSearchYet == true) {
-    properties = stays
-  }
 
   return (
     <div className={styles.container}>
