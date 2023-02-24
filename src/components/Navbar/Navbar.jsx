@@ -28,17 +28,17 @@ function Navbar({ handleInputChange, handleInputSubmit, dropdownMenu, changeDrop
           <div className={styles.dropdown}>
             <div className={styles.content}>
               <div className={styles.dropdownBar}>
-                <div>
+                <div className={styles.boxDropdown}>
                   <p className={styles.locationBar}>Location</p>
                   <p className={styles.locationText} onClick={() => changeDropdownState()}>
                     { selectedCity }, Finland
                   </p>
                 </div>
-                <div>
+                <div className={styles.boxDropdown}>
                   <p className={styles.locationBar}>Guests</p>
                   <Searchbar handleInputChange={handleInputChange} handleInputSubmit={handleInputSubmit} />
                 </div>
-                <div>
+                <div className={styles.buttonBox}>
                   <button className={styles.searchBtn} onClick={(e) => handleInputSubmit(e)}>
                     <img src={loupe} className={styles.redLoupe} />
                     <p>Search</p>
@@ -64,7 +64,7 @@ function Navbar({ handleInputChange, handleInputSubmit, dropdownMenu, changeDrop
         <div className={styles.container}>
           <img className={styles.logo} src={logo} alt='logo' />
           <div className={styles.bar}>
-            <div className={styles.location}>
+            <div  className={styles.boxBar}>
               <p className={styles.locationText} onClick={() => changeDropdownState()}>
                 { selectedCity }, Finland
               </p>

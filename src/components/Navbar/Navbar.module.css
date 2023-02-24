@@ -6,9 +6,20 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    /* position: absolute; */
+    align-items: center;    
     background-color: white;
+}
+
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100vh;        
+    background: rgba(79, 79, 79, 0.4);
+    position: fixed;
+}
+
+p {
+    margin: 0;
 }
 
 @keyframes dropdown {
@@ -38,55 +49,13 @@
     text-align: left;
 }
 
-.row {
-    display: flex;
-    flex-direction: row;
-}
-
-.bar {    
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 16px;
-    height: 55px;
-    padding: 0 26px 0 26px;
-}
-
-p {
-    margin: 0;
-    padding-top: 10px;
-}
-
-.logo {
-    width: 69px;
-    height: 14px;
-}
-
-.location {
-    color: #333333;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 18px;
-    font-family: 'Mulish', sans-serif;
-    cursor: pointer;
-    padding: 0;
-    margin-right: 20px;
-}
-
-.locationList {
-    cursor: pointer;
-}
-
-li {
+.content li {
     list-style: none;
     margin: 0; 
     
 }
 
-
-ul {
+.content ul {
     color: #4F4F4F;
     font-size: 14px;
     display: flex;
@@ -95,6 +64,75 @@ ul {
     margin: 0;
     padding-top: 30px;
     justify-content: start;   
+}
+
+.bar {
+    width: 297px;  
+    display: grid;    
+    grid-template-columns: 138px 106px 53px;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    height: 55px;
+}
+
+.dropdownBar {
+    width: 100%;  
+    display: grid;    
+    grid-template-columns: 40% 40% 20%;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    height: 55px;    
+}
+
+.locationBox {
+    width: inherit;
+}
+
+.logo {
+    width: 69px;
+    height: 14px;
+}
+
+.boxDropdown {
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    height: 55px;
+    display: flex;
+    flex-direction: column;    
+    justify-content: center;
+    margin: 0 0 0 30px;
+}
+
+.boxBar {    
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    height: 55px;
+    display: flex;
+    flex-direction: column;    
+    justify-content: center;
+}
+
+.buttonBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.locationText {    
+    color: #333333;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    font-family: 'Mulish', sans-serif;
+    cursor: pointer;
+    padding: 0;    
+}
+
+.locationList {
+    width: 100px;
+    cursor: pointer;
 }
 
 .locationBar {
@@ -106,19 +144,26 @@ ul {
 }
 
 .searchbar {
-    width: 50%;
+    width: 96px;
+    height: 55px;
     display: flex;
+    padding-left: 10px;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .searchBtn {
+    height: 48px;
+    width: 127px;
     display: flex;
     flex-direction: row;
-    background-color: #EB5757;
-    padding: 15px 27px;
-    border-radius: 10px;
+    background-color: #EB5757;    
+    border-radius: 16px;
     border-width: 0;
     align-items: center;
     justify-content: center;
+}
+.searchBtn img {
+    padding: 0 10px 0 0;
 }
 
 .searchBtn p {
@@ -129,15 +174,7 @@ ul {
     padding: 0;
 }
 
-.background {
-    position: absolute;
-    width: 100%;
-    height: 100vh;        
-    background: rgba(79, 79, 79, 0.4);    
-}
-
-.redLoupe {
-    color: #EB5757;
+.redLoupe {    
     width: 17px;
     height: 17px;    
 }
@@ -145,7 +182,7 @@ ul {
 .map {
     width: 25px;
     height: 25px;
-    padding-right: 10px;
+    padding-right: 10px;    
 }
 
 p {
