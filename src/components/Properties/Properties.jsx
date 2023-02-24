@@ -3,6 +3,7 @@ import styles from './Properties.module.css';
 import stays from '../../stays.json';
 import './Properties.css';
 import { useState } from 'react';
+import star from '../../assets/star.svg';
 
 function Properties({ dropdownMenu, numberGuests, setNumberGuests, location, setLocation, search, setSearch }) {
 
@@ -67,9 +68,7 @@ function Properties({ dropdownMenu, numberGuests, setNumberGuests, location, set
                         <p className={styles.type}>{stay.type}</p>
                       </div>
                       <div className={styles.ratingContainer}>
-                        <span class="material-symbols-outlined">
-                          star
-                        </span>
+                        <img src={star} className={styles.star} />
                         <p className={styles.rating}>{stay.rating}</p>
                       </div>
                     </div>

@@ -27,6 +27,7 @@ function App() {
     else setNumberGuests("")
     if (dropdownMenu == true) setDropdownMenu(false)
     setSearch(true)
+    e.target.reset()
   }
 
   const locationSearch = (city) => {
@@ -34,29 +35,27 @@ function App() {
     setDropdownMenu(false)
     setSearch(true)
     return location
-  }  
+  }
 
   return (
     <div className="App">
-      <div className="container">
-        <Navbar
-          handleInputChange={handleInputChange}
-          handleInputSubmit={handleInputSubmit}
-          dropdownMenu={dropdownMenu}
-          changeDropdownState={changeDropdownState}
-          locationSearch={locationSearch}
-        />
-        <Properties
-          dropdownMenu={dropdownMenu}
-          numberGuests={numberGuests}
-          setNumberGuests={setNumberGuests}
-          location={location}
-          setLocation={setLocation}
-          search={search}
-          setSearch={setSearch}
-        />
-        <Footer />
-      </div>
+      <Navbar
+        handleInputChange={handleInputChange}
+        handleInputSubmit={handleInputSubmit}
+        dropdownMenu={dropdownMenu}
+        changeDropdownState={changeDropdownState}
+        locationSearch={locationSearch}
+      />
+      <Properties
+        dropdownMenu={dropdownMenu}
+        numberGuests={numberGuests}
+        setNumberGuests={setNumberGuests}
+        location={location}
+        setLocation={setLocation}
+        search={search}
+        setSearch={setSearch}
+      />
+      <Footer />
     </div>
   );
 }

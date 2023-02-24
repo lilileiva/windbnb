@@ -3,6 +3,8 @@ import styles from './Navbar.module.css';
 import logo from '../../img/logo.png';
 import Searchbar from '../Searchbar/Searchbar';
 import stays from '../../stays.json';
+import loupe from '../../assets/loupe.svg';
+import map from '../../assets/map.svg';
 
 function Navbar({ handleInputChange, handleInputSubmit, dropdownMenu, changeDropdownState, locationSearch }) {
 
@@ -14,9 +16,10 @@ function Navbar({ handleInputChange, handleInputSubmit, dropdownMenu, changeDrop
   return <>
     {
       dropdownMenu ? (
-        <div className={styles.container}>
+        <>
+          <div className={styles.background}></div>
           <div className={styles.dropdown}>
-            <div className={styles.content}>            
+            <div className={styles.content}>
               <div className={styles.bar}>
                 <div>
                   <p className={styles.locationBar}>Location</p>
@@ -24,12 +27,20 @@ function Navbar({ handleInputChange, handleInputSubmit, dropdownMenu, changeDrop
                     Helsinki, Finland
                   </p>
                 </div>
-                <Searchbar handleInputChange={handleInputChange} handleInputSubmit={handleInputSubmit} />
+                <div>
+                  <p className={styles.locationBar}>Guests</p>
+                  <Searchbar handleInputChange={handleInputChange} handleInputSubmit={handleInputSubmit} />
+                </div>
+                <button className={styles.searchBtn} onClick={(e) => handleInputSubmit(e)}>
+                  <img src={loupe} className={styles.redLoupe} />
+                  <p>Search</p>
+                </button>
               </div>
               <li className={styles.locationList} >
                 {
                   citiesFiltered.map((city) => (
                     <ul>
+                      <img src={map} className={styles.map} />
                       <p onClick={() => locationSearch(city)}>
                         {city}, Finland
                       </p>
@@ -39,17 +50,18 @@ function Navbar({ handleInputChange, handleInputSubmit, dropdownMenu, changeDrop
               </li>
             </div>
           </div>
-        </div>
+        </>
       ) : (
         <div className={styles.container}>
-          <div className={styles.content}>
-            <div className={styles.spaceBetween}>
-              <img className={styles.logo} src={logo} alt='logo' />
-              <div className={styles.row}>
-                <p className={styles.location} onClick={() => changeDropdownState()}>
-                  Helsinki, Finland
-                </p>
-                <Searchbar handleInputChange={handleInputChange} handleInputSubmit={handleInputSubmit} />
+          <img className={styles.logo} src={logo} alt='logo' />
+          <div className={styles.bar}>
+            <p className={styles.location} onClick={() => changeDropdownState()}>
+              Helsinki, Finland
+            </p>
+            <div className={styles.searchbar}>
+              <Searchbar handleInputChange={handleInputChange} handleInputSubmit={handleInputSubmit} />
+              <div className={styles.submit} onClick={(e) => handleInputSubmit(e)}>
+                <img src={loupe} className={styles.redLoupe} />
               </div>
             </div>
           </div>
