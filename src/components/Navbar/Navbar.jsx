@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './Navbar.module.css';
 import logo from '../../img/logo.png';
 import Searchbar from '../Searchbar/Searchbar';
@@ -6,12 +6,19 @@ import stays from '../../stays.json';
 import loupe from '../../assets/loupe.svg';
 import map from '../../assets/map.svg';
 
-function Navbar({ handleInputChange, handleInputSubmit, dropdownMenu, changeDropdownState, locationSearch }) {
+
+function Navbar({ handleInputChange, handleInputSubmit, dropdownMenu, changeDropdownState, locationSearch, location }) {
 
   let cities = []
   stays.filter((stay) => cities.push(stay.city))
   let citiesFiltered = []
   cities.map((city) => !citiesFiltered.includes(city) ? citiesFiltered.push(city) : null)
+  const [selectedCity, setSelectedCity] = useState("Helsinki")
+
+  const searchLocation = (city) => {
+    locationSearch(city)
+    setSelectedCity(city)
+  }
 
   return <>
     {
@@ -20,28 +27,30 @@ function Navbar({ handleInputChange, handleInputSubmit, dropdownMenu, changeDrop
           <div className={styles.background}></div>
           <div className={styles.dropdown}>
             <div className={styles.content}>
-              <div className={styles.bar}>
+              <div className={styles.dropdownBar}>
                 <div>
                   <p className={styles.locationBar}>Location</p>
-                  <p className={styles.location} onClick={() => changeDropdownState()}>
-                    Helsinki, Finland
+                  <p className={styles.locationText} onClick={() => changeDropdownState()}>
+                    { selectedCity }, Finland
                   </p>
                 </div>
                 <div>
                   <p className={styles.locationBar}>Guests</p>
                   <Searchbar handleInputChange={handleInputChange} handleInputSubmit={handleInputSubmit} />
                 </div>
-                <button className={styles.searchBtn} onClick={(e) => handleInputSubmit(e)}>
-                  <img src={loupe} className={styles.redLoupe} />
-                  <p>Search</p>
-                </button>
+                <div>
+                  <button className={styles.searchBtn} onClick={(e) => handleInputSubmit(e)}>
+                    <img src={loupe} className={styles.redLoupe} />
+                    <p>Search</p>
+                  </button>
+                </div>
               </div>
-              <li className={styles.locationList} >
+              <li>
                 {
                   citiesFiltered.map((city) => (
-                    <ul>
+                    <ul className={styles.locationList} onClick={() => searchLocation(city)}>
                       <img src={map} className={styles.map} />
-                      <p onClick={() => locationSearch(city)}>
+                      <p>
                         {city}, Finland
                       </p>
                     </ul>
@@ -55,14 +64,16 @@ function Navbar({ handleInputChange, handleInputSubmit, dropdownMenu, changeDrop
         <div className={styles.container}>
           <img className={styles.logo} src={logo} alt='logo' />
           <div className={styles.bar}>
-            <p className={styles.location} onClick={() => changeDropdownState()}>
-              Helsinki, Finland
-            </p>
+            <div className={styles.location}>
+              <p className={styles.locationText} onClick={() => changeDropdownState()}>
+                { selectedCity }, Finland
+              </p>
+            </div>
             <div className={styles.searchbar}>
               <Searchbar handleInputChange={handleInputChange} handleInputSubmit={handleInputSubmit} />
-              <div className={styles.submit} onClick={(e) => handleInputSubmit(e)}>
-                <img src={loupe} className={styles.redLoupe} />
-              </div>
+            </div>
+            <div className={styles.submit} onClick={(e) => handleInputSubmit(e)}>
+              <img src={loupe} className={styles.redLoupe} />
             </div>
           </div>
         </div>

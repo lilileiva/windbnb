@@ -45,6 +45,7 @@ function App() {
         dropdownMenu={dropdownMenu}
         changeDropdownState={changeDropdownState}
         locationSearch={locationSearch}
+        location={location}
       />
       <Properties
         dropdownMenu={dropdownMenu}
