@@ -5,10 +5,9 @@ import './Properties.css';
 import { useState } from 'react';
 import star from '../../assets/star.svg';
 
-function Properties({ dropdownMenu, numberGuests, setNumberGuests, location, setLocation, search, setSearch }) {
+function Properties({ numberGuests, setNumberGuests, location, setLocation, search, setSearch, listProperties, setListProperties }) {
 
-  let properties = []
-  const [listProperties, setListProperties] = useState([])
+  let properties = []  
 
   const setProperties = (numberGuests, location) => {
     if (numberGuests !== "" && location == "") {          
@@ -16,9 +15,8 @@ function Properties({ dropdownMenu, numberGuests, setNumberGuests, location, set
     }
     else if (location !== "" && numberGuests == "") {      
       properties = stays.filter((stay) => stay.city === location)        
-    } else {
-      properties = stays
-      setListProperties(properties) 
+    } else {      
+      setListProperties(stays) 
     }
     setLocation("")
     setNumberGuests("")  

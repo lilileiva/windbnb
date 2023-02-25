@@ -95,6 +95,7 @@ p {
 .logo {
     width: 69px;
     height: 14px;
+    cursor: pointer;
 }
 
 .boxDropdown {

@@ -7,7 +7,7 @@ import loupe from '../../assets/loupe.svg';
 import map from '../../assets/map.svg';
 
 
-function Navbar({ handleInputChange, handleInputSubmit, dropdownMenu, changeDropdownState, locationSearch, location }) {
+function Navbar({ handleInputChange, handleInputSubmit, dropdownMenu, changeDropdownState, locationSearch, setListProperties }) {
 
   let cities = []
   stays.filter((stay) => cities.push(stay.city))
@@ -18,6 +18,10 @@ function Navbar({ handleInputChange, handleInputSubmit, dropdownMenu, changeDrop
   const searchLocation = (city) => {
     locationSearch(city)
     setSelectedCity(city)
+  }
+  
+  const resetProperties = () => {    
+    setListProperties(stays) 
   }
 
   return <>
@@ -62,7 +66,7 @@ function Navbar({ handleInputChange, handleInputSubmit, dropdownMenu, changeDrop
         </>
       ) : (
         <div className={styles.container}>
-          <img className={styles.logo} src={logo} alt='logo' />
+          <img className={styles.logo} src={logo} alt='logo' onClick={() => resetProperties()} />
           <div className={styles.bar}>
             <div  className={styles.boxBar}>
               <p className={styles.locationText} onClick={() => changeDropdownState()}>

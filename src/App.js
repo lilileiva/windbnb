@@ -10,6 +10,7 @@ function App() {
   const [numberGuests, setNumberGuests] = useState("")
   const [location, setLocation] = useState("")
   const [search, setSearch] = useState(false)
+  const [listProperties, setListProperties] = useState([])
 
   const [dropdownMenu, setDropdownMenu] = useState(false)
   const changeDropdownState = () => {
@@ -44,17 +45,18 @@ function App() {
         handleInputSubmit={handleInputSubmit}
         dropdownMenu={dropdownMenu}
         changeDropdownState={changeDropdownState}
-        locationSearch={locationSearch}
-        location={location}
+        locationSearch={locationSearch} 
+        setListProperties={setListProperties}       
       />
-      <Properties
-        dropdownMenu={dropdownMenu}
+      <Properties        
         numberGuests={numberGuests}
         setNumberGuests={setNumberGuests}
         location={location}
         setLocation={setLocation}
         search={search}
         setSearch={setSearch}
+        listProperties={listProperties}
+        setListProperties={setListProperties}
       />
       <Footer />
     </div>
