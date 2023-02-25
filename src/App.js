@@ -24,8 +24,10 @@ function App() {
 
   const handleInputSubmit = (e) => {
     e.preventDefault()
-    if (num) setNumberGuests(Number(num))
-    else setNumberGuests("")
+    if (!num) {
+      return setSearch(false)
+    }
+    if (num) setNumberGuests(Number(num))    
     if (dropdownMenu == true) setDropdownMenu(false)
     setSearch(true)
     e.target.reset()
