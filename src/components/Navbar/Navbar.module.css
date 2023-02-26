@@ -62,7 +62,7 @@ p {
     flex-direction: row;    
     align-items: center;    
     margin: 0;
-    padding-top: 30px;
+    padding-bottom: 30px;
     justify-content: start;   
 }
 
@@ -121,7 +121,7 @@ p {
     justify-content: center;
 }
 
-.locationText {    
+.searchText {    
     color: #333333;
     font-weight: 400;
     font-size: 14px;
@@ -129,6 +129,16 @@ p {
     font-family: 'Mulish', sans-serif;
     cursor: pointer;
     padding: 0;    
+}
+
+.defaultText {
+    color: #BDBDBD;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    font-family: 'Mulish', sans-serif;
+    cursor: pointer;
+    padding: 0;   
 }
 
 .locationList {
@@ -162,6 +172,7 @@ p {
     border-width: 0;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 .searchBtn img {
     padding: 0 10px 0 0;
@@ -172,9 +183,54 @@ p {
     font-family: 'Mulish', sans-serif;
     font-size: 14px;
     font-weight: 600;
-    padding: 0;
+    padding: 0;    
 }
 
+.options {
+    display: grid;
+    grid-template-columns: 40% 40%;
+    padding-top: 30px;
+    font-size: 14px;
+    font-family: 'Mulish', sans-serif;
+    line-height: 18px;
+    color: #333333;
+}
+
+.options h3 {
+    font-size: 14px;
+    margin: 0;
+    color: #333333;
+}
+
+.adultsChildren {
+    padding-bottom: 50px;
+}
+.adultsChildren p {
+    color: #BDBDBD;
+}
+
+.counter {
+    display: flex;
+    flex-direction: row;
+    padding-top: 15px;
+}
+.counter button {
+    width: 23px;
+    height: 23px;
+    border: 1px solid #828282;
+    border-radius: 4px;
+    color: #828282;
+    cursor: pointer;
+}
+.counter p {
+    color: #333333;
+    font-weight: 700;
+    padding: 0 15px 0 15px;
+}
+
+.submit {
+    cursor: pointer;
+}
 .redLoupe {    
     width: 17px;
     height: 17px;    

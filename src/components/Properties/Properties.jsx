@@ -5,37 +5,41 @@ import './Properties.css';
 import { useState } from 'react';
 import star from '../../assets/star.svg';
 
-function Properties({ numberGuests, setNumberGuests, location, setLocation, search, setSearch, listProperties, setListProperties }) {
+function Properties({ numberGuests, setNumberGuests, location, setLocation, isSearch, setIsSearch, listProperties, setListProperties }) {
 
   let properties = []  
 
   const setProperties = (numberGuests, location) => {
-    if (numberGuests !== "" && location == "") {          
+    if (numberGuests > 0 && location == "") {          
       properties = stays.filter((stay) => stay.maxGuests === numberGuests)        
     }
-    else if (location !== "" && numberGuests == "") {      
-      properties = stays.filter((stay) => stay.city === location)        
+    else if (location !== "" && numberGuests == 0) {      
+      properties = stays.filter((stay) => stay.city === location)
+    }    
+    else if (location !== "" && numberGuests > 0) {  
+      properties = stays.filter((stay) => stay.city === location)
+      properties = properties.filter((stay) => stay.maxGuests === numberGuests) 
     } else {      
       setListProperties(stays) 
     }
     setLocation("")
-    setNumberGuests("")  
+    setNumberGuests(0)  
     return properties
   }
 
   const [noSearchYet, setNoSearchYet] = useState(true)
   useEffect(() => { 
-    if (search == true)  {
+    if (isSearch == true)  {
       properties = setProperties(numberGuests, location)
       setListProperties(properties)    
       setNoSearchYet(false)   
     }
-    if (search == false && noSearchYet == true) {
+    if (isSearch == false && noSearchYet == true) {
       properties = stays
       setListProperties(properties) 
     }
-    setSearch(false)
-  }, [search, listProperties])
+    setIsSearch(false)
+  }, [isSearch, listProperties])
 
   return (
     <div className={styles.container}>
