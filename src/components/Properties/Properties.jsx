@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react'
 import styles from './Properties.module.css';
 import stays from '../../stays.json';
-import './Properties.css';
 import { useState } from 'react';
 import star from '../../assets/star.svg';
 
-function Properties({ numberGuests, setNumberGuests, location, setLocation, isSearch, setIsSearch, listProperties, setListProperties }) {
+function Properties({ numberGuests, location, isSearch, setIsSearch, listProperties, setListProperties }) {
 
   let properties = []  
 
@@ -22,8 +21,6 @@ function Properties({ numberGuests, setNumberGuests, location, setLocation, isSe
     } else {      
       setListProperties(stays) 
     }
-    setLocation("")
-    setNumberGuests(0)  
     return properties
   }
 
