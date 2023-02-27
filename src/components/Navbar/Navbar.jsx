@@ -47,15 +47,32 @@ function Navbar({ dropdownMenu, changeDropdownState, setListProperties, numberGu
 
   useEffect(() => {
     setNumberGuests(numberAdults + numberChildren)
-  }, [numberAdults, numberChildren])
+  }, [setNumberGuests, numberAdults, numberChildren])
 
   const addCity = () => {
     setSearchCity(true)
     setSearchGuests(false)
   }
+  
   const addGuest = () => {
     setSearchGuests(true)
+    setSearchCity(false)    
+  }
+
+  const addCityOnDropdownBar = () => {
+    setSearchCity(true)
+    setSearchGuests(false)
+    changeDropdownState()
+  }
+
+  const addGuestOnDropdownBar = () => {
+    setSearchGuests(true)
     setSearchCity(false)
+    changeDropdownState()
+  }
+
+  const onKeyPressed = (e) => {
+    console.log(e.keyCode);
   }
 
   return <>
@@ -89,7 +106,7 @@ function Navbar({ dropdownMenu, changeDropdownState, setListProperties, numberGu
                 </div>
                 <div className={styles.buttonBox}>
                   <button className={styles.searchBtn} onClick={() => search()}>
-                    <img src={loupeWhite} className={styles.redLoupe} />
+                    <img src={loupeWhite} alt='loupe' className={styles.loupe} />
                     <p>Search</p>
                   </button>
                 </div>
@@ -101,8 +118,8 @@ function Navbar({ dropdownMenu, changeDropdownState, setListProperties, numberGu
                       <li>
                         {
                           citiesFiltered.map((city) => (
-                            <ul className={styles.locationList} onClick={() => setLocation(city)}>
-                              <img src={place} className={styles.place} />
+                            <ul className={styles.locationList} onClick={() => setLocation(city)} key={city}>
+                              <img src={place} alt='place' className={styles.place} />
                               <p>
                                 {city}, Finland
                               </p>
@@ -113,7 +130,7 @@ function Navbar({ dropdownMenu, changeDropdownState, setListProperties, numberGu
                     </>
                   }
                 </div>
-                <div>
+                <div className={styles.optionGuests}>
                   {
                     searchGuests && <>
                       <div className={styles.adultsChildren}>
@@ -149,26 +166,26 @@ function Navbar({ dropdownMenu, changeDropdownState, setListProperties, numberGu
         <div className={styles.container}>
           <img className={styles.logo} src={logo} alt='logo' onClick={() => resetProperties()} />
           <div className={styles.bar}>
-            <div className={styles.boxBar} onClick={() => changeDropdownState()}>
+            <div className={styles.boxBar} onClick={() => addCityOnDropdownBar()}>
               <p className={styles.searchText}>
                 {
                   location !== ""
-                    ? <p className={styles.searchText} onClick={() => addCity()}>{location}, Finland</p>
-                    : <p className={styles.defaultText} onClick={() => addCity()}>Add city</p>
+                    ? <p className={styles.searchText}>{location}, Finland</p>
+                    : <p className={styles.defaultText}>Add city</p>
                 }
               </p>
             </div>
-            <div className={styles.boxBar} onClick={() => changeDropdownState()}>
+            <div className={styles.boxBar} onClick={() => addGuestOnDropdownBar()}>
               <p className={styles.searchText}>
                 {
                   numberGuests
-                    ? <p className={styles.searchText} onClick={() => addGuest()}>{numberGuests} guests</p>
-                    : <p className={styles.defaultText} onClick={() => addGuest()}>Add guests</p>
+                    ? <p className={styles.searchText}>{numberGuests} guests</p>
+                    : <p className={styles.defaultText}>Add guests</p>
                 }
               </p>
             </div>
             <div className={styles.submit} onClick={() => search()}>
-              <img src={loupeRed} className={styles.redLoupe} />
+              <img src={loupeRed} alt='loupe' className={styles.loupe} />
             </div>
           </div>
         </div>

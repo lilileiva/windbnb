@@ -20,6 +20,7 @@
 
 p {
     margin: 0;
+    padding: 0;
 }
 
 @keyframes dropdown {
@@ -63,7 +64,7 @@ p {
     align-items: center;    
     margin: 0;
     padding-bottom: 30px;
-    justify-content: start;   
+    justify-content: start;
 }
 
 .bar {
@@ -104,13 +105,24 @@ p {
     display: flex;
     flex-direction: column;    
     justify-content: center;
-    margin: 0 0 0 30px;
+    padding: 0 0 0 30px;
+    cursor: pointer;
+}
+.boxDropdown:hover {
+    background-color: #f5f5f5;
+    transition: 0.2s;
+    border-radius: 16px;    
 }
 
 .selectedBox {    
     border: 1px solid #333333;
     filter: drop-shadow(0px 1px 6px rgba(0, 0, 0, 0.1));
     border-radius: 16px;
+    cursor: pointer;
+}
+.selectedBox:hover {
+    background-color: #f5f5f5;
+    transition: 0.2s;
 }
 
 .boxBar {    
@@ -119,6 +131,17 @@ p {
     display: flex;
     flex-direction: column;    
     justify-content: center;
+    cursor: pointer;
+}
+.boxBar:hover {
+    background-color: #f5f5f5;
+    transition: 0.2s;
+}
+.boxBar:first-child:hover {
+    background-color: #f5f5f5;
+    transition: 0.2s;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
 }
 
 .buttonBox {
@@ -132,8 +155,7 @@ p {
     font-weight: 400;
     font-size: 14px;
     line-height: 18px;
-    font-family: 'Mulish', sans-serif;
-    cursor: pointer;
+    font-family: 'Mulish', sans-serif;    
     padding: 0;    
 }
 
@@ -143,7 +165,6 @@ p {
     font-size: 14px;
     line-height: 18px;
     font-family: 'Mulish', sans-serif;
-    cursor: pointer;
     padding: 0;   
 }
 
@@ -160,14 +181,6 @@ p {
     font-weight: 800;
 }
 
-.searchbar {
-    width: 96px;
-    height: 55px;
-    display: flex;
-    padding-left: 10px;
-    border-right: 1px solid rgba(0, 0, 0, 0.1);
-}
-
 .searchBtn {
     height: 48px;
     width: 127px;
@@ -179,6 +192,10 @@ p {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+}
+.searchBtn:hover {
+    background-color: #db4d4d;
+    transition: 0.2s;
 }
 .searchBtn img {
     padding: 0 10px 0 0;
@@ -241,7 +258,13 @@ p {
     height: inherit;
     cursor: pointer;
 }
-.redLoupe {    
+.submit:hover {
+    background-color: #f5f5f5;
+    transition: 0.2s;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+}
+.loupe {    
     width: 17px;
     height: 17px;    
 }
@@ -252,9 +275,10 @@ p {
     padding-right: 10px;    
 }
 
-p {
-    padding: 0;
+.editYourSearch {
+    display: none;
 }
+
 
 @media (max-width: 717px) {
     .dropdown {
@@ -300,7 +324,7 @@ p {
         flex-direction: column;
         box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
         border-radius: 16px;
-        align-items: baseline;         
+        align-items: baseline;       
     }    
 
     .content {
@@ -319,6 +343,7 @@ p {
         border: 1px solid #333333;
         filter: drop-shadow(0px 1px 6px rgba(0, 0, 0, 0.1));
         border-radius: 16px;
+        cursor: pointer;
     }
 
     .boxDropdown {
@@ -329,8 +354,9 @@ p {
         flex-direction: column;    
         justify-content: center;
         align-items: start;
-        padding: 0;        
-    }
+        padding: 0;
+        cursor: pointer;       
+    }    
 
     .boxDropdown p {
         width: inherit;
@@ -371,10 +397,15 @@ p {
         margin: 0 0 20px 25px;
     }
 
+    .optionGuests {
+        width: 100%;
+    }
+
     .adultsChildren {
         display: flex;
         flex-direction: row;
         padding-bottom: 50px;
         width: 80%;
+        justify-content: space-between;
     }
 }
