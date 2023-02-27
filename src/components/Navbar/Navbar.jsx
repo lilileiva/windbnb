@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import styles from './Navbar.module.css';
-import logo from '../../img/logo.png';
+import logo from '../../assets/logo.png';
 import stays from '../../stays.json';
-import loupe from '../../assets/loupe.svg';
-import map from '../../assets/map.svg';
+import loupeRed from '../../assets/loupe_red.svg';
+import loupeWhite from '../../assets/loupe_white.svg';
+import place from '../../assets/place.svg';
 
 
 function Navbar({ dropdownMenu, changeDropdownState, setListProperties, numberGuests, setNumberGuests, search, location, setLocation }) {
@@ -64,6 +65,7 @@ function Navbar({ dropdownMenu, changeDropdownState, setListProperties, numberGu
           <div className={styles.background} onClick={() => changeDropdownState()}></div>
           <div className={styles.dropdown}>
             <div className={styles.content}>
+              <p className={styles.editYourSearch}>Edit your search</p>
               <div className={styles.dropdownBar}>
                 <div className={searchCity && styles.selectedBox}>
                   <div className={styles.boxDropdown} onClick={() => addCity()}>
@@ -87,7 +89,7 @@ function Navbar({ dropdownMenu, changeDropdownState, setListProperties, numberGu
                 </div>
                 <div className={styles.buttonBox}>
                   <button className={styles.searchBtn} onClick={() => search()}>
-                    <img src={loupe} className={styles.redLoupe} />
+                    <img src={loupeWhite} className={styles.redLoupe} />
                     <p>Search</p>
                   </button>
                 </div>
@@ -100,7 +102,7 @@ function Navbar({ dropdownMenu, changeDropdownState, setListProperties, numberGu
                         {
                           citiesFiltered.map((city) => (
                             <ul className={styles.locationList} onClick={() => setLocation(city)}>
-                              <img src={map} className={styles.map} />
+                              <img src={place} className={styles.place} />
                               <p>
                                 {city}, Finland
                               </p>
@@ -115,8 +117,10 @@ function Navbar({ dropdownMenu, changeDropdownState, setListProperties, numberGu
                   {
                     searchGuests && <>
                       <div className={styles.adultsChildren}>
-                        <h3>Adults</h3>
-                        <p>Ages 13 or above</p>
+                        <div>
+                          <h3>Adults</h3>
+                          <p>Ages 13 or above</p>
+                        </div>
                         <div className={styles.counter}>
                           <button onClick={() => substractNumberAdults()}>-</button>
                           <p>{numberAdults}</p>
@@ -124,8 +128,10 @@ function Navbar({ dropdownMenu, changeDropdownState, setListProperties, numberGu
                         </div>
                       </div>
                       <div className={styles.adultsChildren}>
-                        <h3>Children</h3>
-                        <p>Age 2-12</p>
+                        <div>
+                          <h3>Children</h3>
+                          <p>Age 2-12</p>
+                        </div>
                         <div className={styles.counter}>
                           <button onClick={() => substractNumberChildren()}>-</button>
                           <p>{numberChildren}</p>
@@ -162,7 +168,7 @@ function Navbar({ dropdownMenu, changeDropdownState, setListProperties, numberGu
               </p>
             </div>
             <div className={styles.submit} onClick={() => search()}>
-              <img src={loupe} className={styles.redLoupe} />
+              <img src={loupeRed} className={styles.redLoupe} />
             </div>
           </div>
         </div>

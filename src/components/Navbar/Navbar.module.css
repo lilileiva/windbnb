@@ -246,7 +246,7 @@ p {
     height: 17px;    
 }
 
-.map {
+.place {
     width: 25px;
     height: 25px;
     padding-right: 10px;    
@@ -279,6 +279,7 @@ p {
         justify-content: space-between;
         align-items: start;    
         background-color: white;
+        padding-top: 10px;
     }
 
     .bar {
@@ -360,5 +361,20 @@ p {
         width: 200px;
         cursor: pointer;
         padding: 0;
+    }
+
+    .editYourSearch {
+        font-size: 12px;
+        font-family: 'Mulish', sans-serif;
+        font-weight: 700;
+        width: 100%;
+        margin: 0 0 20px 25px;
+    }
+
+    .adultsChildren {
+        display: flex;
+        flex-direction: row;
+        padding-bottom: 50px;
+        width: 80%;
     }
 }
