@@ -83,8 +83,8 @@ function Navbar({ dropdownMenu, changeDropdownState, setListProperties, numberGu
           <div className={styles.dropdown}>
             <div className={styles.content}>
               <p className={styles.editYourSearch}>Edit your search</p>
-              <div className={styles.dropdownBar}>
-                <div className={searchCity && styles.selectedBox}>
+              <div className={styles.dropdownBar}>                
+                <div className={searchCity ? styles.selectedBox : styles.noSelectedBox}>
                   <div className={styles.boxDropdown} onClick={() => addCity()}>
                     <p className={styles.locationBar}>Location</p>
                     {
@@ -93,8 +93,8 @@ function Navbar({ dropdownMenu, changeDropdownState, setListProperties, numberGu
                         : <p className={styles.defaultText}>Add city </p>
                     }
                   </div>
-                </div>
-                <div className={searchGuests && styles.selectedBox}>
+                </div>                
+                <div className={searchGuests ? styles.selectedBox : styles.noSelectedBox}>
                   <div className={styles.boxDropdown} onClick={() => addGuest()}>
                     <p className={styles.locationBar}>Guests</p>
                     {
